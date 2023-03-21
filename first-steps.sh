@@ -27,9 +27,13 @@ $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev
 echo "step 3"
 #step 4
 sudo apt update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
-echo "Docker installed"
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin -y
 echo "step 4"
+# step 5
+sudo groupadd docker
+sudo usermod -aG docker $USER
+echo "step 5"
+echo "Docker installed"
 # Installing Portainer
 # step 1
 sudo docker volume create portainer_data
